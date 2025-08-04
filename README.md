@@ -30,20 +30,19 @@ For baseline models (e.g., ConvLSTM, SimVP), you can run `inference_baseline.py`
 
 The data is pre-organized in `./data/GS/` and requires minimal additional setup. It includes yearly NetCDF files:
 
-- **geo_YYYY.nc**: Geophysical data (e.g., currents, temperatures) for year YYYY.
-- **mhw_YYYY.nc**: MHW event data for year YYYY.
+- **geo_YYYY.nc**: Ocean surface geostrophic current data for year YYYY. Data size: T*C*H*W, where T is time (365/366 days), C is channel (0 for u_g, 1 for v_g), H (480, longitude), W (600, latitude).
+- **mhw_YYYY.nc**: MHW event data for year YYYY. Data size: T*C*H*W, where T is time (365/366 days), C is channel (0 for ssta, 1 for zos, 2 for u10, 3 for v10, 4 for t2m), H (480, longitude), W (600, latitude).
+- More detailed desription can be found in the appendix of our manuscript.
 
-Years range from 1993 to 2020, suitable for training (1993-2019) and testing/inference (2020).
+Years range from 1993 to 2020, suitable for training/validating (1993-2019) and testing/inference (2020).
 
 ### Steps to Prepare Data:
-1. **Verify Data Integrity**: Ensure all `.nc` files are present in `./data/GS/`. No download is needed if the directory is complete.
+1. **Verify Data Integrity**: Ensure all `.nc` files are present in `./data/GS/`.
 2. **Mask File**: Use `mask.npy` for masking invalid regions (e.g., land areas).
 3. **Dataloaders**:
    - `dataloader_vel.py`: Handles data for the velocity model \(\mathcal{M}_{\theta}\) (MultiConv).
    - `dataloader.py`: Handles data for the main Oceane2e model, integrating MHW data and outputs from \(\mathcal{M}_{\theta}\).
    
-   These scripts load data in batches, apply normalizations, and prepare sequences for time-series modeling.
-
 4. **Configuration**: Edit `config_vel.yaml` for \(\mathcal{M}_{\theta}\) (e.g., batch size, input channels) and `config.yaml` for Oceane2e (e.g., sequence length, learning rate). Ensure paths point to `./data/GS/`.
 
 No further data augmentation or preprocessing is required beyond what's in the dataloaders. For custom data, place new `.nc` files in `./data/GS/` and update configs accordingly.
@@ -54,21 +53,14 @@ Training Oceane2e is done in two sequential steps:
 1. Train the velocity/auxiliary model \(\mathcal{M}_{\theta}\) (MultiConv) to generate intermediate features.
 2. Train the main Oceane2e model using outputs from Step 1.
 
-Use DDP for distributed training on 4 GPUs. Set `CUDA_VISIBLE_DEVICES=0,1,2,3` in your environment.
-
 ### Step 1: Train \(\mathcal{M}_{\theta}\) (Velocity Model)
 - Script: `train_vel.py`
-- This trains MultiConv on geophysical data to predict velocities or related fields.
 - Outputs: Checkpoints saved in `./checkpoints/` (e.g., MultiConv_best_model.pth). Logs in `./logs/MultiConv_training_log.log`.
 
 Command:
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 train_vel.py --config config_vel.yaml
 ```
-
-- **Hyperparameters**: Defined in `config_vel.yaml` (e.g., epochs, optimizer).
-- **Data Used**: geo_*.nc files from 1993-2019.
-- **Expected Duration**: Depends on hardware; monitor logs for progress.
 
 ### Step 2: Train Main Oceane2e Model
 - Script: `train_online.py`
@@ -80,45 +72,25 @@ Command:
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 train_online.py --config config.yaml
 ```
 
-- **Hyperparameters**: Defined in `config.yaml`.
-- **Data Used**: mhw_*.nc files from 1993-2019, integrated with \(\mathcal{M}_{\theta}\) outputs.
-- **Notes**: Ensure Step 1 is complete before running. Training is "online" style, possibly incorporating real-time updates.
-
-After training, best models are saved for inference.
-
 ## Inference with the Model
 
 Inference follows a similar two-step process:
 1. Infer with \(\mathcal{M}_{\theta}\) to generate intermediate data.
 2. Infer with the main Oceane2e model using the generated data, MHW test file, and mask.
 
-Use DDP for multi-GPU inference. Outputs are saved as .npy files in `./results/` (e.g., Oceane2e_inputs.npy, Oceane2e_outputs.npy).
+Outputs are saved as .npy files in `./results/` (e.g., Oceane2e_inputs.npy, Oceane2e_outputs.npy).
 
 ### Step 1: Infer \(\mathcal{M}_{\theta}\) (Velocity Model)
-- Script: `inference_vel.py`
-- Loads pre-trained MultiConv from `./checkpoints/pretrained/MultiConv_best_model.pth`.
-- Generates: `./data/GS/MultiConv_data.nc` (intermediate velocity predictions).
-
 Command:
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 inference_vel.py --config config_vel.yaml
 ```
 
-- **Data Used**: geo_2020.nc (test year).
-- **Notes**: This step populates MultiConv_data.nc for the next step.
-
 ### Step 2: Infer Main Oceane2e Model
-- Script: `inference.py`
-- Loads pre-trained Oceane2e from `./checkpoints/` (e.g., Oceane2e_best_model_*.pth).
-- Integrates: `./data/GS/mhw_2020.nc`, `mask.npy`, and MultiConv_data.nc from Step 1.
-
 Command:
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 inference.py --config config.yaml
 ```
-
-- **Data Used**: mhw_2020.nc, mask.npy, and MultiConv_data.nc.
-- **Outputs**: Predictions in `./results/` (e.g., Oceane2e_outputs.npy). Visualize with `results/vis.ipynb` if needed.
 
 ## Baseline Models
 
