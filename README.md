@@ -133,12 +133,3 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 
 - Outputs: In `./results/` (e.g., ConvLSTM_outputs.npy).
 - Training baselines: Use `train_baseline.py` similarly, but this is not the focus.
-
-## Additional Notes
-- **Dependencies**: Python 3.x, PyTorch (with DDP support), NetCDF4, NumPy, etc. Install via `pip install -r requirements.txt` (assume it exists or infer from imports).
-- **GPU Requirements**: Commands assume 4 GPUs; adjust `--nproc_per_node` for fewer.
-- **Troubleshooting**: Check logs for errors. Ensure configs match data shapes.
-- **Visualization**: Use `results/vis.ipynb` for plotting results.
-- **Extensions**: For custom years, update dataloaders and configs.
-
-Contact for issues or contributions.
