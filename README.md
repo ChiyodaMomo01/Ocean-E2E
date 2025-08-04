@@ -40,8 +40,8 @@ Years range from 1993 to 2020, suitable for training/validating (1993-2019) and 
 1. **Verify Data Integrity**: Ensure all `.nc` files are present in `./data/GS/`.
 2. **Mask File**: Use `mask.npy` for masking invalid regions (e.g., land areas).
 3. **Dataloaders**:
-   - `dataloader_vel.py`: Handles data for the velocity model \(\mathcal{M}_{\theta}\) (MultiConv).
-   - `dataloader.py`: Handles data for the main Oceane2e model, integrating MHW data and outputs from \(\mathcal{M}_{\theta}\).
+   - `dataloader_vel.py`: Handles data for the velocity model $\(\mathcal{M}_{\theta}\)$ (MultiConv).
+   - `dataloader.py`: Handles data for the main Oceane2e model, integrating MHW data and outputs from $\(\mathcal{M}_{\theta}\)$.
    
 4. **Configuration**: Edit `config_vel.yaml` for \(\mathcal{M}_{\theta}\) (e.g., batch size, input channels) and `config.yaml` for Oceane2e (e.g., sequence length, learning rate). Ensure paths point to `./data/GS/`.
 
