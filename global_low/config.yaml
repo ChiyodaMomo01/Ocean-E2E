@@ -1,0 +1,42 @@
+# config.yaml
+selected_model: QGM
+
+models:
+  QGM:
+    simvp_gm_params:
+      shape_in: [1, 9, 360, 720]
+      shape_out: [1, 2, 360, 720]
+    simvp_s_params:
+      shape_in: [1, 7, 360, 720]
+      shape_out: [1, 1, 360, 720]
+    ocean_e2e_params:
+      dt: 86400
+      steps: 1
+    qgm_params:
+      nx: 360
+      ny: 720
+
+trainings:
+  QGM:
+    seed: 42  # Replace with your seed
+    parallel_method: DistributedDataParallel
+    batch_size: 1  # Replace with your value
+    num_workers: 1  # Replace with your value
+    init_lr: 0.001  # Replace with your INIT_LR
+    lr_step_size: 10  # Replace with your LR_STEP_SIZE
+    lr_gamma: 0.2  # Replace with your LR_GAMMA
+    num_steps_train: 30  # Replace with your NUM_STEPS_TRAIN
+    num_epochs: 100  # Replace with your EPOCHS
+
+datas:
+  QGM:
+    data_path: './data'  # Replace with your DATA
+    boundary_path: './mask.npy'  # Replace with your BOUNDARY_PATH
+
+loggings:
+  QGM:
+    backbone: 'mhw_4step_filter'  # Replace with your BACKBONE
+    log_dir: ./logs
+    checkpoint_dir: ./checkpoints
+    result_dir: ./results
+    ckpt_path_pre: ./checkpoints # Replace with your CKPT_PATH_PRE, if needed

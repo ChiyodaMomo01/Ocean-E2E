@@ -76,7 +76,7 @@ else:
         return tensor
 
 # ============== Data loader ==============
-from dataloader import train_Dataset, test_Dataset
+from dataloader_baseline import train_Dataset, test_Dataset
 
 train_dataset = train_Dataset(data_config['data_path'])
 val_dataset = test_Dataset(data_config['data_path'])

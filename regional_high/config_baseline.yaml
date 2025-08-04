@@ -1,0 +1,251 @@
+selected_model: 'ConvLSTM'
+
+models:
+  FNO:
+    parameters:
+      modes1: 16
+      modes2: 16
+      width: 64
+      C_in: 7       
+      C_out: 1     
+
+  SimVP:
+    parameters:
+      shape_in: [1, 7, 480, 600]
+      shape_out: [1, 1, 480, 600]
+      
+  CNO:
+    parameters:
+      in_dim: 7
+      in_size_h: 128
+      in_size_w: 128
+      N_layers: 4
+      N_res: 1
+      N_res_neck: 6
+      channel_multiplier: 32
+      conv_kernel: 3
+      cutoff_den: 2.0001
+      filter_size: 6
+      lrelu_upsampling: 2
+      half_width_mult: 0.8
+      radial: False
+      batch_norm: True
+      out_dim: 1
+      out_size_h: 1
+      out_size_w: 1
+      expand_input: False
+      latent_lift_proj_dim: 64
+      add_inv: True
+      activation: 'cno_lrelu'
+
+  U_net:
+    parameters:
+      input_channels: 7   
+      output_channels: 1  
+      kernel_size: 3     
+      dropout_rate: 0.5
+
+  ResNet:
+    parameters:
+      input_channels: 7   
+      output_channels: 1  
+      dropout_rate: 0.5
+
+  PastNet:
+    parameters:
+      shape_in: [1, 7, 480, 600]
+      hid_T: 256
+      N_T: 8
+      incep_ker: [3, 5, 7, 11]
+      groups: 8
+      res_units: 32
+      res_layers: 2
+      embedding_nums: 512
+      embedding_dim: 64
+
+  ConvLSTM:
+    parameters:
+      input_dim: 7
+      hidden_dim: [64, 64]
+      num_layers: 2
+      batch_first: True
+
+  Dit:
+    parameters:
+      shape_in: [1, 1, 7, 180, 360]
+
+  LSM:
+    parameters:
+      in_dim: 7
+      out_dim: 1
+      d_model: 64
+      num_token: 4
+      num_basis: 16
+      patch_size: '4,4'
+      padding: '0,0'
+
+trainings:
+  FNO:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DataParallel'
+
+  CNO:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  SimVP:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  PastNet:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  U_net:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  Dit:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  ConvLSTM:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  LSM:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+  ResNet:
+    batch_size: 1
+    num_epochs: 100
+    learning_rate: 0.001
+    lr_step_size: 10
+    lr_gamma: 0.2
+    seed: 42
+    parallel_method: 'DistributedDataParallel'
+
+
+datas:
+  FNO:
+      data_path: './data/GS'
+
+  CNO:
+      data_path: './data/GS'
+
+  SimVP:
+    data_path: './data/GS'
+  
+  PastNet:
+    data_path: './data/GS'
+  
+  U_net:
+    data_path: './data/GS'
+
+  Dit:
+    data_path: './data/GS'
+
+  ConvLSTM:
+    data_path: './data/GS'
+
+  LSM:
+    data_path: './data/GS'
+
+  ResNet:
+    data_path: './data/GS'
+
+loggings:
+  FNO:
+      backbone: 'FNO'
+      log_dir: './logs'
+      checkpoint_dir: './checkpoints'
+      result_dir: './results'
+
+  CNO:
+      backbone: 'CNO'
+      log_dir: './logs'
+      checkpoint_dir: './checkpoints'
+      result_dir: './results'
+
+  SimVP:
+    backbone: 'SimVP'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
+
+  PastNet:
+    backbone: 'PastNet'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
+
+  U_net:
+    backbone: 'U_net'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
+
+  Dit:
+    backbone: 'Dit'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
+
+  ConvLSTM:
+    backbone: 'ConvLSTM'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
+
+  LSM:
+    backbone: 'LSM'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
+
+  ResNet:
+    backbone: 'ResNet'
+    log_dir: './logs'
+    checkpoint_dir: './checkpoints'
+    result_dir: './results'
