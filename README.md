@@ -158,12 +158,16 @@ For baselines:
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 inference_baseline.py --config config_baseline.yaml
 ```
 
-## Acknowledgement
-We appreciate the following github repos a lot for their valuable code base or datasets.
-# Baseline Models in our global/regional simulations:
-Most of the baseline implementations refer to this open source library: https://github.com/easylearningscores/TurbL1_AI4Science
-SimVP: https://github.com/chengtan9907/OpenSTL
-CNO: https://github.com/camlab-ethz/ConvolutionalNeuralOperator
-LSM: https://github.com/thuml/Latent-Spectral-Models
-PastNet: https://github.com/easylearningscores/PastNet
-DiT: https://github.com/facebookresearch/DiT
+## Acknowledgements
+
+We greatly appreciate the following GitHub repositories for their valuable codebases and datasets.
+
+### Baseline Models in Our Global/Regional Simulations
+
+Most baseline implementations are derived from this open-source library: [https://github.com/easylearningscores/TurbL1_AI4Science](https://github.com/easylearningscores/TurbL1_AI4Science).
+
+- **SimVP**: [https://github.com/chengtan9907/OpenSTL](https://github.com/chengtan9907/OpenSTL)
+- **CNO**: [https://github.com/camlab-ethz/ConvolutionalNeuralOperator](https://github.com/camlab-ethz/ConvolutionalNeuralOperator)
+- **LSM**: [https://github.com/thuml/Latent-Spectral-Models](https://github.com/thuml/Latent-Spectral-Models)
+- **PastNet**: [https://github.com/easylearningscores/PastNet](https://github.com/easylearningscores/PastNet)
+- **DiT**: [https://github.com/facebookresearch/DiT](https://github.com/facebookresearch/DiT)
