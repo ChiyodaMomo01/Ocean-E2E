@@ -158,8 +158,29 @@ class SimVP(nn.Module):
         self.dec = Decoder(hid_S, C, N_S)
 
 
+    # for baseline simulation, use this forward() method
+    # def forward(self, x_raw):
+    #     # x_raw = x_raw.unsqueeze(1)
+    #     B, T, C, H, W = x_raw.shape
+    #     x = x_raw.view(B*T, C, H, W)
+
+    #     embed, skip = self.enc(x)
+    #     _, C_, H_, W_ = embed.shape
+
+    #     z = embed.view(B, T, C_, H_, W_)
+    #     hid = self.hid(z)
+    #     hid = hid.reshape(B*T, C_, H_, W_)
+
+    #     Y = self.dec(hid, skip)
+    #     term = Y.shape
+    #     Y = Y.reshape(B, T, C, H, W)
+    #     # Y = Y.squeeze(1)
+    #     Y = Y[:,:,0:self.C_o]
+    #     return Y
+
+    # for Ocean-E2E simulation, use this forward() method
     def forward(self, x_raw):
-        # x_raw = x_raw.unsqueeze(1)
+        x_raw = x_raw.unsqueeze(1)
         B, T, C, H, W = x_raw.shape
         x = x_raw.view(B*T, C, H, W)
 
@@ -173,8 +194,8 @@ class SimVP(nn.Module):
         Y = self.dec(hid, skip)
         term = Y.shape
         Y = Y.reshape(B, T, C, H, W)
-        # Y = Y.squeeze(1)
-        Y = Y[:,:,0:self.C_o]
+        Y = Y.squeeze(1)
+        Y = Y[:,0:self.C_o]
         return Y
 
 
