@@ -8,18 +8,18 @@ This work focuses on the end-to-end forecast of global extreme marine heatwaves 
 </div>
 
 ## Table of Contents
-- [# Quick Start](#quick-start)
-- [# Ocean-E2E Experiment: Regional High-resolution Simulation](#ocean-e2e-experiment-regional-high-resolution-simulation)
-  - [## Overview](#overview-1)
-  - [## Data Preparation](#data-preparation-1)
-  - [## Training the Model](#training-the-model-1)
-  - [## Inference with the Model](#inference-with-the-model-1)
-  - [## Baseline Models](#baseline-models)
-- [# Ocean-E2E Experiment: Global Low-resolution Simulation](#ocean-e2e-experiment-global-low-resolution-simulation)
-  - [## Overview](#overview)
-  - [## Data Preparation](#data-preparation)
-  - [## Training the Model](#training-the-model)
-  - [## Inference with the Model](#inference-with-the-model)
+- [Quick Start](#quick-start)
+- [Ocean-E2E Experiment: Regional High-resolution Simulation](#ocean-e2e-experiment-regional-high-resolution-simulation)
+  - [Overview](#overview-1)
+  - [Data Preparation](#data-preparation-1)
+  - [Training the Model](#training-the-model-1)
+  - [Inference with the Model](#inference-with-the-model-1)
+  - [Baseline Models](#baseline-models)
+- [Ocean-E2E Experiment: Global Low-resolution Simulation](#ocean-e2e-experiment-global-low-resolution-simulation)
+  - [Overview](#overview)
+  - [Data Preparation](#data-preparation)
+  - [Training the Model](#training-the-model)
+  - [Inference with the Model](#inference-with-the-model)
 
 # Quick Start:
 Here's a quick demo to get started with our Ocean-E2E (regional high-resolution) inference. This runs the two-step inference process:
