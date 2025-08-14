@@ -26,12 +26,15 @@ This work focuses on the end-to-end forecast of global extreme marine heatwaves 
   - [Training the Model](#training-the-model)
   - [Inference with the Model](#inference-with-the-model)
 
-# Quick Start:
-Here's a quick demo to get started with our Ocean-E2E (regional high-resolution) inference. This runs the two-step inference process:
+# Quick Start
+
+Here's a quick guide to get started with inference using our Ocean-E2E model (regional high-resolution).
+First, download the checkpoints and testing data (for the year 2020) from [Hugging Face](https://huggingface.co/ChiyodaMomo01/Ocean-E2E).
+The following commands execute the two-step inference process:
 ```bash
 # Step 1: Infer velocity model
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 inference_vel.py --config config_vel.yaml
-# Step 2: Infer main Oceane2e model
+# Step 2: Infer main Ocean-E2E model
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 inference.py --config config.yaml
 # Check results
 ls ./results/ # Should show Oceane2e_inputs.npy, Oceane2e_outputs.npy, etc.
