@@ -32,7 +32,7 @@ Here's a quick guide to get started with inference using our Ocean-E2E model (re
 First, download the checkpoints and testing data (for the year 2020) from [Hugging Face](https://huggingface.co/ChiyodaMomo01/Ocean-E2E).
 The following commands execute the two-step inference process:
 ```bash
-# Step 1: Infer velocity model
+# Step 1: Infer velocity model, which will generate a NetCDF4 file ./data/GS/MultiConv_data.nc
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 inference_vel.py --config config_vel.yaml
 # Step 2: Infer main Ocean-E2E model
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 inference.py --config config.yaml
