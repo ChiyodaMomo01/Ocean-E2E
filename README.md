@@ -6,15 +6,11 @@
 This repo is the official PyTorch implementation of Ocean-E2E: **Hybrid Physics-Based and Data-Driven Global Forecasting of Marine Heatwaves with End-to-End Neural Assimilation**.
 This work focuses on the end-to-end forecast of global extreme marine heatwaves (MHWs), which are unusually warm sea surface temperature events with profound impacts on marine ecosystems. Accurate prediction of extreme MHWs has significant scientific and financial worth. However, existing methods still have certain limitations, especially in the most extreme MHWs. In this study, to address these issues, based on the physical nature of MHWs, we created a novel hybrid data-driven and numerical MHWs forecast framework Ocean-E2E, which is capable of 40-day accurate MHW forecasting with end-to-end data assimilation. Our framework significantly improves the forecast ability of extreme MHWs by explicitly modeling the effect of oceanic mesoscale advection and air-sea interaction based on a differentiable dynamic kernel. Furthermore, Ocean-E2E is capable of end-to-end MHWs forecast and regional high-resolution prediction using neural data assimilation approaches, allowing our framework to operate completely independently of numerical models while demonstrating high assimilation stability and accuracy, outperforming the current state-of-the-art ocean numerical forecasting-assimilation models. Experimental results show that the proposed framework performs excellently on global-to-regional scales and short-to-long-term forecasts, especially in those most extreme MHWs. Overall, our model provides a framework for forecasting and understanding MHWs and other climate extremes.
 </div>
+
 <br>
-<p align="center">
-  <a href="https://arxiv.org/abs/2505.22071">
-    <img src="https://img.shields.io/badge/Arxiv-2505.22071-orange" alt="Arxiv" />
-  </a>
-  <a href="https://huggingface.co/ChiyodaMomo01/Ocean-E2E">
-    <img src="https://img.shields.io/badge/Huggingface-Demo-blue" alt="Huggingface" />
-  </a>
-</p>
+<div style="text-align: center;">
+<a href="https://arxiv.org/abs/2505.22071" style="margin-right: 5px;"><img src="https://img.shields.io/badge/Arxiv-2505.22071-orange" alt="Arxiv" style="vertical-align: middle;"></a><a href="https://huggingface.co/ChiyodaMomo01/Ocean-E2E"><img src="https://img.shields.io/badge/Huggingface-Demo-blue" alt="Huggingface" style="vertical-align: middle;"></a>
+</div>
 
 ## Table of Contents
 - [Quick Start](#quick-start)
