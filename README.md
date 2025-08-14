@@ -27,7 +27,16 @@ This work focuses on the end-to-end forecast of global extreme marine heatwaves 
   - [Inference with the Model](#inference-with-the-model)
 
 # Quick Start
+## Installation
+```bash
+git clone https://github.com/ChiyodaMomo01/Ocean-E2E.git
+cd Ocean-E2E
 
+# create new anaconda env
+conda env create -f environment.yaml
+conda activate MHWs
+```
+## Inference
 Here's a quick guide to get started with inference using our Ocean-E2E model (regional high-resolution).
 First, download the checkpoints and testing data (for the year 2020) from [Hugging Face](https://huggingface.co/ChiyodaMomo01/Ocean-E2E).
 The following commands execute the two-step inference process:
