@@ -193,3 +193,5 @@ Most baseline implementations are derived from this open-source library: [https:
 - **LSM**: [https://github.com/thuml/Latent-Spectral-Models](https://github.com/thuml/Latent-Spectral-Models)
 - **PastNet**: [https://github.com/easylearningscores/PastNet](https://github.com/easylearningscores/PastNet)
 - **DiT**: [https://github.com/facebookresearch/DiT](https://github.com/facebookresearch/DiT)
+
+If you have any questions, please contact [srq24@mails.tsinghua.edu.cn](mailto:srq24@mails.tsinghua.edu.cn).
