@@ -1,4 +1,25 @@
-# Ocean-E2E
+<h1 align="center">🌊 Ocean-E2E: Hybrid Physics-Based and Data-Driven Global Forecasting of Marine Heatwaves with End-to-End Neural Assimilation</h1>
+
+<p align="center">
+  <b>Oral Presentation at the KDD 2026 AI for Sciences Track</b>
+</p>
+
+<p align="center">
+  <b>Ruiqi Shu</b> ·
+  <b>Ruijian Gou</b> ·
+  <b>Yanfei Xiang</b> ·
+  <b>Xiaomeng Huang</b>
+</p>
+
+<div align="center">
+
+[![arXiv](https://img.shields.io/badge/arXiv-2505.22071-b31b1b.svg)](https://arxiv.org/abs/2505.22071)
+[![KDD 2026 Oral](https://img.shields.io/badge/KDD%202026-Oral%20Presentation-4b8bbe.svg)](https://kdd2026.kdd.org/)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Model%20%26%20Data-ffd21e.svg)](https://huggingface.co/ChiyodaMomo01/Ocean-E2E)
+[![Code](https://img.shields.io/badge/GitHub-Ocean--E2E-24292f.svg)](https://github.com/ChiyodaMomo01/Ocean-E2E)
+
+</div>
+
 <p align="center" width="100%">
   <img src='figures/oceane2e_main.png' width="95%">
 </p>
@@ -12,10 +33,10 @@
   </blockquote>
 </div>
 
-<br>
-<div style="text-align: center;">
-<a href="https://arxiv.org/abs/2505.22071" style="margin-right: 5px;"><img src="https://img.shields.io/badge/Arxiv-2505.22071-orange" alt="Arxiv" style="vertical-align: middle;"></a><a href="https://huggingface.co/ChiyodaMomo01/Ocean-E2E"><img src="https://img.shields.io/badge/Huggingface-Demo-blue" alt="Huggingface" style="vertical-align: middle;"></a>
-</div>
+## News
+
+- **2026**: Ocean-E2E was accepted as an **Oral Presentation** at the **KDD 2026 AI for Sciences Track**.
+- **2025.05**: The paper was released on [arXiv](https://arxiv.org/abs/2505.22071).
 
 ## Table of Contents
 - [Quick Start](#quick-start)
