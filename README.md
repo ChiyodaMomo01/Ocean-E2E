@@ -5,10 +5,19 @@
 </p>
 
 <p align="center">
-  <b>Ruiqi Shu</b> ·
-  <b>Ruijian Gou</b> ·
-  <b>Yanfei Xiang</b> ·
-  <b>Xiaomeng Huang</b>
+  <b>Ruiqi Shu</b><sup>1</sup> ·
+  <b>Ruijian Gou</b><sup>2</sup> ·
+  <b>Yanfei Xiang</b><sup>1</sup> ·
+  <b>Xiaomeng Huang</b><sup>1,*</sup>
+</p>
+
+<p align="center">
+  <sup>1</sup>Department of Earth System Science, Tsinghua University, Beijing, China<br>
+  <sup>2</sup>Department of Ocean Big Data and Artificial Intelligence, Laoshan Laboratory, Qingdao, Shandong, China
+</p>
+
+<p align="center">
+  Correspondence: Xiaomeng Huang (<code>hxm@tsinghua.edu.cn</code>)
 </p>
 
 <div align="center">
@@ -35,7 +44,7 @@
 
 ## News
 
-- **2026**: Ocean-E2E was accepted as an **Oral Presentation** at the **KDD 2026 AI for Sciences Track**.
+- **2026.06**: Ocean-E2E was accepted as an Oral Presentation at the KDD 2026 AI for Sciences Track.
 - **2025.05**: The paper was released on [arXiv](https://arxiv.org/abs/2505.22071).
 
 ## Table of Contents
